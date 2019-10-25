@@ -1,0 +1,549 @@
+---------------------------------------
+JAVA/J2EE & SOA
+---------------------------------------
+runExersizes(1):**************** Module 1 Begin ********************
+ ================= Data Manipulations and Tests ===================
+---------------------------------------
+runExersizes(1):Numberic Operators ....
+runExersizes(1):10+3=13
+runExersizes(1):10-3=7
+runExersizes(1):10*3=30
+runExersizes(1):10/3=3
+runExersizes(1):10%3=1 <-- Remainder
+ -------------- Voting Age ... asuming 18 is leagle -----------
+runExersizes(1):Name: John Doe
+runExersizes(1):16 Not of Age to Vote
+runExersizes(1):Name: Jane Doe
+runExersizes(1):23 of Age to Vote
+ -------------- Negative / Zero / Positive -----------
+runExersizes(1):-2 negative
+runExersizes(1):-1 negative
+runExersizes(1):0 Zero
+runExersizes(1):1 positive
+runExersizes(1):2 positive
+ -------------- Compare some numbers -----------
+---------------------------------------
+runExersizes(1):5 < 6
+runExersizes(1):6 == 6
+runExersizes(1):6 > 5
+runExersizes(1):5 > 4
+runExersizes(1):4 == 4
+
+
+================= forLoop ========================================== 
+
+0 ===================== forLoop 0 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
+
+1 ===================== forLoop 1 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
+
+
+ ================= While  ========================================== 
+
+1 ===================== While 1 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
+
+2 ===================== While 2 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
+
+
+ ================= doWhile  ========================================== 
+
+0 ===================== doWhile 0 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
+
+1 ===================== doWhile 1 =================== 
+ -------------- Even or Odd Numbers -----------
+0 is odd
+1 is even
+2 is odd
+3 is even
+4 is odd
+5 is even
+ -------------- Factorial of a Number -----------
+5: 1
+5: 2
+5: 6
+5: 24
+5: 120
+8: 1
+8: 2
+8: 6
+8: 24
+8: 120
+8: 720
+8: 5040
+8: 40320
+ -------------- Table of 10 Rows, 10 Columns -----------
+0|100 101 102 103 104 105 106 107 108 109 
+1|100 101 102 103 104 105 106 107 108 109 
+2|100 101 102 103 104 105 106 107 108 109 
+3|100 101 102 103 104 105 106 107 108 109 
+4|100 101 102 103 104 105 106 107 108 109 
+5|100 101 102 103 104 105 106 107 108 109 
+6|100 101 102 103 104 105 106 107 108 109 
+7|100 101 102 103 104 105 106 107 108 109 
+8|100 101 102 103 104 105 106 107 108 109 
+9|100 101 102 103 104 105 106 107 108 109 
+ -------------- Add the Digits of a Number -----------
+100  <-------------------------------
+value:100 sum:0 num:10
+value:100 sum:0 num:1
+value:100 sum:1 num:0
+101  <-------------------------------
+value:101 sum:1 num:10
+value:101 sum:1 num:1
+value:101 sum:2 num:0
+102  <-------------------------------
+value:102 sum:2 num:10
+value:102 sum:2 num:1
+value:102 sum:3 num:0
+103  <-------------------------------
+value:103 sum:3 num:10
+value:103 sum:3 num:1
+value:103 sum:4 num:0
+104  <-------------------------------
+value:104 sum:4 num:10
+value:104 sum:4 num:1
+value:104 sum:5 num:0
+----------  Same Digits but Reversed --------------
+1  <-------------------------------
+value: 100 reverse:001 sum:1 num:0
+101  <-------------------------------
+value: 101 reverse:101 sum:1 num:10
+value: 101 reverse:101 sum:1 num:1
+value: 101 reverse:101 sum:2 num:0
+201  <-------------------------------
+value: 102 reverse:201 sum:1 num:20
+value: 102 reverse:201 sum:1 num:2
+value: 102 reverse:201 sum:3 num:0
+301  <-------------------------------
+value: 103 reverse:301 sum:1 num:30
+value: 103 reverse:301 sum:1 num:3
+value: 103 reverse:301 sum:4 num:0
+401  <-------------------------------
+value: 104 reverse:401 sum:1 num:40
+value: 104 reverse:401 sum:1 num:4
+value: 104 reverse:401 sum:5 num:0
+ -------------- generate 10 Fibonacci numbers -----------
+Value: 0
+Value: 1
+Value: 1
+Value: 2
+Value: 3
+Value: 5
+Value: 8
+Value: 13
+Value: 21
+Value: 34
