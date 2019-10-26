@@ -1,5 +1,7 @@
 package brianRobinson;
 
+import java.text.DecimalFormat;
+
 final class MyUtils {
 
 	protected static enum StringType {
@@ -7,7 +9,7 @@ final class MyUtils {
 	}
 
 	// ******************************************************************************
-	protected  static boolean isNumber(Object o) {
+	static boolean isNumber(Object o) {
 		String label = "isNumber";
 		boolean rtn = false;
 			try {
@@ -18,6 +20,11 @@ final class MyUtils {
 
 		//logit(label , o.toString() + " " + rtn);
 		return rtn;
+	}
+	
+	static String formatDouble(Double d) {
+		DecimalFormat df2 = new DecimalFormat("$#######.00");
+		return df2.format(d);
 	}
 
 } // END .....

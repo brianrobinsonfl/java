@@ -17,9 +17,12 @@ public class Basics {
 		//m1.runExersizes();
 
 		// Test Module 2 
-		Module2 m2 = new Module2();
-		m2.runExersizes();
+		//Module2 m2 = new Module2();
+		//m2.runExersizes();
 
+		// Test Module 3 
+		Module3 m3 = new Module3();
+		m3.runExersizes();
 	} // END
 
 } // END

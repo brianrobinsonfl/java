@@ -1,0 +1,42 @@
+package brianRobinson;
+
+import java.util.Scanner;
+
+public class Module2 {
+
+
+	// ***********************************************
+	Module2() { // Constructor
+		 MyUtils.logit("Module2", "Constructor");
+	} // END
+
+	// ***********************************************
+	public void runExersizes() {
+		String label = "runExersizes";
+		MyUtils.logit(label, "Begin ...");
+
+		MyEmployees myHR = new MyEmployees(5);
+		
+	    Scanner scanner = new Scanner(System.in);
+	    
+	    for (int i = 0 ;i < myHR.getLength();i++) {
+	    	MyUtils.logit(label," ==== You can add ("+(-i)+") more Employees to you list. ===");
+	    	
+	    	MyUtils.logit(label,"Enter Employee ID ... ");
+		    String username = scanner.next();    	
+	    	MyUtils.logit(label,"Enter Employee Name ... ");
+		    String username = scanner.next();
+	
+		    MyUtils.logit(label,"Enter Employee Age ... ");
+		    String age = scanner.next();
+	
+		    MyUtils.logit(label,"Adding .."+i+" "+myHR.getLength()+". Name ("+ username +") Age ("+ age+")");  
+		    myHR.add(username,age);
+	    }
+	    scanner.close();
+	    
+	    
+}	
+	
+	
+}

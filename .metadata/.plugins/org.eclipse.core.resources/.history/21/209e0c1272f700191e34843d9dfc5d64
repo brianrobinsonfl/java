@@ -1,0 +1,234 @@
+package brianRobinson;
+
+import java.util.*;
+
+final class Module3 {
+	private Account accountList[] = new Account[100];
+	private int accountIdx = 0;
+
+	// ***********************************************
+	Module3() { // Constructor
+		LogIt.logit("Module3", "Constructor");
+	}
+	static void message (String m, String t, int nbr, String n, Double a) {
+		LogIt.logit("Message ",m+" "+t+", "+nbr+", "+n+", "+a);
+	}
+
+	// ***********************************************
+	public void runExersizes() {
+		String label = "runExersizes";
+
+		String str = "";
+		Scanner scanner = new Scanner(System.in);
+		do {
+			LogIt.logit(label, "");
+			LogIt.logit(label, "=================================================================");
+			LogIt.logit(label,
+					"Choose... (C)reateAccount, (U)pdateAccount, (D)isplayAccounts (A)ddInterest or e(X)it. ");
+			str = scanner.next().toUpperCase();
+
+			switch (str.charAt(0)) {
+			case 'C':
+				LogIt.logit(label, " Please enter Name:");
+				String n = scanner.next().toUpperCase();
+				LogIt.logit(label, " Please enter Amount:");
+				String a = scanner.next().toUpperCase();
+				LogIt.logit(label, " Please choose Type - (C)hecking, (S)avings ");
+				str = scanner.next().toUpperCase();
+				boolean passed = true;
+				
+				if (str.charAt(0) == 'C') {
+					LogIt.logit(label, "Checking Account ...");
+					CurrentAccount act = new CurrentAccount(this.getAccountIdx());
+					act.setName(n);
+					if(act.deposit(Double.valueOf(a))) 
+						this.setAccountList(act);
+					 else
+						 passed=false;
+					message(" Creation ("+passed+") ",act.getType(),act.getNumber(),act.getName(),act.getAmount());
+				} else {
+					LogIt.logit(label, "Savings Account ...");
+					SBAccount act = new SBAccount(this.getAccountIdx());
+					act.setName(n);
+					if(act.deposit(Double.valueOf(a))) {
+						this.setAccountList(act);	
+						 message(" Successful - ",act.getType(),act.getNumber(),act.getName(),act.getAmount());
+					} else {
+						 passed=false;
+						 message(" Request FAILED - ",act.getType(),act.getNumber(),act.getName(),act.getAmount());
+					}
+				break;
+				
+			case 'D':
+				this.displayAccountList();
+				break;
+			}
+		} while (str.charAt(0) != 'X');
+
+		scanner.close();
+
+	}
+
+	// *******************************************************************************************
+	// *******************************************************************************************
+	private int getAccountIdx() {
+		return accountIdx;
+	}
+
+	private void setAccountList(Account a) {
+		accountList[accountIdx++] = a;
+	}
+
+	private Account getAccountList(int i) {
+		return accountList[i];
+	}
+
+	private void displayAccountList() {
+		for (int i = 0; i < getAccountIdx(); i++) {
+			LogIt.logit("displayAccountList", getAccountList(i).getNumber() + ", " + getAccountList(i).getType() + ", "
+					+ getAccountList(i).getName() + ", " + getAccountList(i).getAmount());
+		}
+	}
+
+}
+
+// *******************************************************************************************
+// *******************************************************************************************
+final class SBAccount extends Account {
+
+	final static double minBalance = 100.00;
+	final static String TYPE = "Savings";
+
+	SBAccount(int n) { // Constructor
+		LogIt.logit("SBAccount", "Constructor");
+		setType("Savings");
+		setNumber(n);
+	}
+
+	boolean addMonthlyInterest(String r) {
+		double rate = Double.parseDouble(r);
+		if (rate <= 0 || getAmount() <= 0)
+			return false;
+		double interest = (getAmount() * (rate / 100));
+		setAmount(getAmount() + interest);
+		return true;
+	}
+
+	boolean deposit(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "deposit " + d);
+		if (d <= 0 || (getAmount() + d) < SBAccount.minBalance) {
+			LogIt.logit("SBAccount", "deposit FAILED ("+d+")  is less than Minimum Amount of ("+SBAccount.minBalance+")");
+			return false;
+		}
+		setAmount(getAmount() + d);
+		return true;
+	}
+
+	double withdraw(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "withdraw " + d);
+		if (getAmount() < (d - SBAccount.minBalance))
+			return -1;
+		setAmount(getAmount() - d);
+		return d;
+	}
+}
+
+// *******************************************************************************************
+// *******************************************************************************************
+final class CurrentAccount extends Account {
+
+	final static double minBalance = 200;
+
+	CurrentAccount(int n) { // Constructor
+		LogIt.logit("CurrentAccount", "Constructor");
+		setType("Checking");
+		setNumber(n);
+	}
+
+	boolean addMonthlyInterest(String rate) {
+		return true;
+	}
+
+	boolean deposit(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "deposit:" + d);
+		if (d <= 0 || (getAmount() + d) < CurrentAccount.minBalance) {
+			LogIt.logit("CurrentAccount", "deposit FAILED ("+d+") is less than Minimum Amount of ("+CurrentAccount.minBalance+")");
+			return false;
+		}
+		setAmount(getAmount() + d);
+		return true;
+	}
+
+	double withdraw(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "withdraw:" + d);
+		if (getAmount() < (d - CurrentAccount.minBalance))
+			return -1;
+		setAmount(getAmount() - d);
+		return d;
+	}
+}
+
+// *******************************************************************************************
+// *******************************************************************************************
+abstract class Account {
+	private int number = 0;
+	private String name = "";
+	private double amount = 0.0;
+	private String type = "";
+
+	Account() { // Constructor
+		LogIt.logit("Account", "Constructor");
+	}
+
+	abstract boolean addMonthlyInterest(String rate); // ------ abstract method --------
+
+	boolean deposit(double d) {
+		LogIt.logit("Account", "deposit");
+		if (d <= 0)
+			return false;
+		setAmount(getAmount() + d);
+		return true;
+	}
+
+	double withdraw(double d) {
+		LogIt.logit("Account", "withdraw");
+		if (getAmount() >= d) {
+			setAmount(getAmount() - d);
+			return getAmount();
+		} else
+			return -1;
+	}
+
+	int getNumber() {
+		return number;
+	}
+
+	void setNumber(int number) {
+		this.number = number+1000;
+	}
+
+	String getName() {
+		return name;
+	}
+
+	void setName(String name) {
+		this.name = name;
+	}
+
+	double getAmount() {
+		return amount;
+	}
+
+	void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	String getType() {
+		return type;
+	}
+
+	void setType(String type) {
+		this.type = type;
+	}
+
+}

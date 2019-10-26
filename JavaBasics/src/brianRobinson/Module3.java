@@ -1,12 +1,19 @@
 package brianRobinson;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 final class Module3 {
+	private Account accountList[] = new Account[100];
+	private int accountIdx = 0;
 
 	// ***********************************************
 	Module3() { // Constructor
 		LogIt.logit("Module3", "Constructor");
+	}
+
+	static void message(String m, String t, int nbr, String n, Double d) {
+		LogIt.logit("Message ", m + " " + t + ", " + nbr + ", " + n + ", " + MyUtils.formatDouble(d));
 	}
 
 	// ***********************************************
@@ -18,105 +25,186 @@ final class Module3 {
 		do {
 			LogIt.logit(label, "");
 			LogIt.logit(label, "=================================================================");
-			LogIt.logit(label, " Please chose action - (A)dd, (D)isplay, (S)earch or e(X)it. ");
+			LogIt.logit(label,
+					"Choose... (C)reateAccount, (U)pdateAccount, (D)isplayAccounts (A)ddInterest or e(X)it. ");
 			str = scanner.next().toUpperCase();
 
-			// ------------- ADD -----------------
-			if (str.charAt(0) == 'A') {
+			switch (str.charAt(0)) {
+			
+			// ---------------------------------------------------------
+			case 'C':
+				LogIt.logit(label, " Create Account ...");
+				LogIt.logit(label, " Please enter Name:");
+				String n = scanner.next().toUpperCase();
+				LogIt.logit(label, " Please enter Amount:");
+				String a = scanner.next().toUpperCase();
+				LogIt.logit(label, " Please choose Type - (C)hecking, (S)avings ");
+				str = scanner.next().toUpperCase();
+				boolean passed = true;
+
+				if (str.charAt(0) == 'C') {
+					LogIt.logit(label, "Checking Account ...");
+					CurrentAccount act = new CurrentAccount(this.getAccountIdx());
+					act.setName(n);
+					if (act.deposit(Double.valueOf(a))) {
+						this.setAccountList(act);
+						message(" Successful - ", act.getType(), act.getNumber(), act.getName(), act.getAmount());
+					} else {
+						passed = false;
+					}
+				} else {
+					LogIt.logit(label, "Savings Account ...");
+					SBAccount act = new SBAccount(this.getAccountIdx());
+					act.setName(n);
+					if (act.deposit(Double.valueOf(a))) {
+						this.setAccountList(act);
+						message(" Successful - ", act.getType(), act.getNumber(), act.getName(), act.getAmount());
+					} else {
+						passed = false;
+					}
+				}
+				break;
+
+			// ---------------------------------------------------------
+			case 'A':
+				LogIt.logit(label, " Add Interest ...");
+				for (int i = 0; i < getAccountIdx(); i++)
+					this.getAccountList(i).addMonthlyInterest();
+
+				break;
+
+			// ---------------------------------------------------------
+			case 'D':
+				this.displayAccountList();
+				break;
 			}
 
 		} while (str.charAt(0) != 'X');
-
 		scanner.close();
 
 	}
 
+	// *******************************************************************************************
+	// *******************************************************************************************
+	private int getAccountIdx() {
+		return accountIdx;
+	}
+
+	private void setAccountList(Account a) {
+		accountList[accountIdx++] = a;
+	}
+
+	private Account getAccountList(int i) {
+		return accountList[i];
+	}
+
+	private void displayAccountList() {
+		for (int i = 0; i < getAccountIdx(); i++) {
+			DecimalFormat df2 = new DecimalFormat("###.##");
+			Double a = Double.valueOf(df2.format(getAccountList(i).getAmount()));
+			message("displayAccountList", getAccountList(i).getType(), getAccountList(i).getNumber(),
+					getAccountList(i).getName(), getAccountList(i).getAmount());
+		}
+	}
+
 }
 
-//***********************************************
-//***********************************************
+// *******************************************************************************************
+// *******************************************************************************************
 final class SBAccount extends Account {
 
 	final static double minBalance = 100.00;
 
-	protected SBAccount() { // Constructor
+	SBAccount(int n) { // Constructor
 		LogIt.logit("SBAccount", "Constructor");
+		setType("Savings");
+		setNumber(n);
 	}
 
-	protected boolean addMonthlyInterest(String r) {
-		double rate = Double.parseDouble(r);
-		if( rate <= 0 || getAmount() <= 0 )
+	boolean addMonthlyInterest() {
+		double rate = 0.04;
+		if (getAmount() <= 0)
 			return false;
-		double interest = (getAmount() * (rate / 100)) ;
+		double interest = (getAmount() * (rate / 100));
 		setAmount(getAmount() + interest);
+		LogIt.logit("CurrentAccount", "addMonthlyInterest " + getNumber() + ", " + getType() + ", " + getName() + ", "
+				+ MyUtils.formatDouble(getAmount()));
+		LogIt.logit("CurrentAccount", "addMonthlyInterest rate(" + rate + ") currentBalance("
+				+ MyUtils.formatDouble(getAmount()) + ") interest(" + MyUtils.formatDouble(interest) + ")");
 		return true;
 	}
 
-	// ***********************************************
-	protected boolean deposit(double d) {  	// ----- Overriding --------
-		LogIt.logit("CurrentAccount", "deposit:"+d);
-		if (d <= 0 || (getAmount() + d) < SBAccount.minBalance)
+	boolean deposit(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "deposit " + d);
+		if (d <= 0 || (getAmount() + d) < SBAccount.minBalance) {
+			LogIt.logit("SBAccount",
+					"deposit FAILED (" + d + ")  is less than Minimum Amount of (" + SBAccount.minBalance + ")");
 			return false;
+		}
 		setAmount(getAmount() + d);
 		return true;
 	}
 
-	protected double withdraw(double d) { 	// ----- Overriding --------
-		LogIt.logit("CurrentAccount", "withdraw:"+d);
-		if (getAmount() < (d - SBAccount.minBalance) ) 
+	double withdraw(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "withdraw " + d);
+		if (getAmount() < (d - SBAccount.minBalance))
 			return -1;
 		setAmount(getAmount() - d);
 		return d;
 	}
 }
 
-//***********************************************
-//***********************************************
+// *******************************************************************************************
+// *******************************************************************************************
 final class CurrentAccount extends Account {
 
 	final static double minBalance = 200;
 
-	protected CurrentAccount() { // Constructor
+	CurrentAccount(int n) { // Constructor
 		LogIt.logit("CurrentAccount", "Constructor");
+		setType("Checking");
+		setNumber(n);
 	}
 
-	protected boolean addMonthlyInterest(String rate) {
+	boolean addMonthlyInterest() {
 		return true;
 	}
-	// ***********************************************
-	protected boolean deposit(double d) {  	// ----- Overriding --------
-		LogIt.logit("CurrentAccount", "deposit:"+d);
-		if (d <= 0 || (getAmount() + d) < CurrentAccount.minBalance)
+
+	boolean deposit(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "deposit:" + d);
+		if (d <= 0 || (getAmount() + d) < CurrentAccount.minBalance) {
+			LogIt.logit("CurrentAccount",
+					"deposit FAILED (" + d + ") is less than Minimum Amount of (" + CurrentAccount.minBalance + ")");
 			return false;
+		}
 		setAmount(getAmount() + d);
 		return true;
 	}
 
-	protected double withdraw(double d) { 	// ----- Overriding --------
-		LogIt.logit("CurrentAccount", "withdraw:"+d);
-		if (getAmount() < (d - CurrentAccount.minBalance) ) 
+	double withdraw(double d) { // ----- Overriding --------
+		LogIt.logit("CurrentAccount", "withdraw:" + d);
+		if (getAmount() < (d - CurrentAccount.minBalance))
 			return -1;
 		setAmount(getAmount() - d);
 		return d;
 	}
 }
 
-//***********************************************
-//***********************************************
+// *******************************************************************************************
+// *******************************************************************************************
 abstract class Account {
 	private int number = 0;
 	private String name = "";
 	private double amount = 0.0;
+	private String type = "";
 
-	// ***********************************************
-	protected Account() { // Constructor
+	Account() { // Constructor
 		LogIt.logit("Account", "Constructor");
 	}
 
-	// ***********************************************
-	protected abstract boolean addMonthlyInterest(String rate); // ------ abstract method --------
+	abstract boolean addMonthlyInterest(); // ------ abstract method --------
 
-	protected boolean deposit(double d) {
+	boolean deposit(double d) {
 		LogIt.logit("Account", "deposit");
 		if (d <= 0)
 			return false;
@@ -124,7 +212,7 @@ abstract class Account {
 		return true;
 	}
 
-	protected double withdraw(double d) {
+	double withdraw(double d) {
 		LogIt.logit("Account", "withdraw");
 		if (getAmount() >= d) {
 			setAmount(getAmount() - d);
@@ -133,29 +221,36 @@ abstract class Account {
 			return -1;
 	}
 
-	// ***********************************************
-	protected int getNumber() {
+	int getNumber() {
 		return number;
 	}
 
-	protected void setNumber(int number) {
-		this.number = number;
+	void setNumber(int number) {
+		this.number = number + 1000;
 	}
 
-	protected String getName() {
+	String getName() {
 		return name;
 	}
 
-	protected void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 
-	protected double getAmount() {
+	double getAmount() {
 		return amount;
 	}
 
-	protected void setAmount(double amount) {
+	void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	String getType() {
+		return type;
+	}
+
+	void setType(String type) {
+		this.type = type;
 	}
 
 }

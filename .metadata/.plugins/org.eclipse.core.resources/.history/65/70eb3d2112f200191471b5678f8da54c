@@ -1,0 +1,136 @@
+package brianRobinson;
+
+import brianRobinson.MyUtils.StringType;
+
+// ***********************************************
+// ***********************************************
+class MyEmp {
+
+	private int ID = 0;
+	private String name = "";
+	private double salary = 0.0;
+	private int UID = 0;
+
+	// ***********************************************
+	public int getUID() {
+		return UID;
+	}
+
+	// ***********************************************
+	public void setUID(int uID) {
+		UID = uID;
+	}
+
+	// ***********************************************
+	MyEmp(int uid, String l, double d) {
+		name = l;
+		salary = d;
+		UID = uid;
+		ID++;
+	}
+
+	// ***********************************************
+	public int getID() {
+		return ID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	// ***********************************************
+	public double getSalary() {
+		return salary;
+	}
+
+	// ***********************************************
+	public void setName(String l) {
+		name = l;
+	}
+
+	// ***********************************************
+	public void setSalary(double d) {
+		salary = d;
+	}
+}
+
+// ***********************************************
+// ***********************************************
+public class MyEmployees {
+
+	private MyEmp myEmployees[] = new MyEmp[0];
+	private int listIdx = 0;
+
+	// ***********************************************
+	MyEmployees(int s) {
+		myEmployees = new MyEmp[s];
+	}
+
+	// ***********************************************
+	public int getLength() {
+		return myEmployees.length;
+	}
+
+	// ***********************************************
+	public void init() {
+		for (int i = 0; i < myEmployees.length && myEmployees[i] != null; i++)
+			myEmployees[i] = null;
+	}
+
+	// ***********************************************
+	public void add(Object... o) {
+		String label = "add";
+		String e = "";
+		double s = -1;
+		int uid = -1;
+		int idx = 0;
+		if (o.length != 3) {
+			MyUtils.logit(label, "Failed on Field Count: " + o.length + " !!");
+			return;
+		}
+
+		for (Object x : o) {
+			switch (++idx) {
+			case 1: {
+				uid = -1;
+				if (MyUtils.isNumber(x)) {
+					uid = Integer.parseInt(String.valueOf(x));
+				}
+				break;
+			}
+			case 2: {
+				e = "";
+				if (!MyUtils.isNumber(x)) {
+					e = String.valueOf(x);
+				}
+				break;
+			}
+			case 3: {
+				s = -1;
+				if (MyUtils.isNumber(x)) {
+					s = Double.parseDouble(String.valueOf(x));
+				}
+				break;
+			}
+			default: {
+				MyUtils.logit(label, "Failed (" + x + ")");
+				break;
+			}
+			}
+		}
+
+		MyEmp myEmp = new MyEmp(uid, e, s);
+		myEmployees[listIdx++] = myEmp;
+		dumpEmployees();
+	}
+
+	// ***********************************************
+	public void dumpEmployees() {
+		MyUtils.logit("dumpEmployees", "myEmployees:" + myEmployees.length);
+		for (int i = 0; i < myEmployees.length && myEmployees[i] != null; i++) {
+			MyUtils.logit("dumpEmployees", "idx(" + i + ")", myEmployees[i].getUID(), myEmployees[i].getName(),
+					myEmployees[i].getSalary());
+		}
+	}
+
+} // END

@@ -1,0 +1,57 @@
+package brianRobinson;
+
+
+public class MyUtils {
+	
+	public enum StringType {
+	    INT,
+	    DOUBLE,
+	    STRING,
+	    OTHER;
+	}
+
+	// ******************************************************************************
+	public static void logit(String label, Object... obj) {
+		System.out.print("[" + Thread.currentThread().getName() + ":" + Thread.currentThread().getId() + "]"+label+":");
+		int i = 0;
+		for (Object x : obj) { 
+			System.out.print(x);
+			if (++i != obj.length) 
+				System.out.print(",");
+		}
+		System.out.println();
+		return;
+	}
+
+	// ******************************************************************************
+	public static void logitAt(String txt) {
+		System.out.print(txt);
+	}
+
+	// ******************************************************************************
+	public static void logit(char c) {
+		System.out.print(c);
+	}
+
+	// ******************************************************************************
+	public static void logit(String txt) {
+		System.out.println(txt);
+	}
+
+	// ******************************************************************************
+	public static StringType stringType(Object o) {
+		String label = "StringType: ";
+		logit(label + o.toString()+" "+o.getClass().getName());
+		
+		StringType rtn = StringType.STRING;
+		  try { Integer.parseInt(o.toString()); 
+				rtn = StringType.INT;
+	        } catch (NumberFormatException e) {  } 
+		  try { Integer.parseInt(o.toString()); 
+				rtn = StringType.INT;
+	        } catch (NumberFormatException e) {  } 		  
+	  
+		  return rtn;
+	}
+
+} // END .....

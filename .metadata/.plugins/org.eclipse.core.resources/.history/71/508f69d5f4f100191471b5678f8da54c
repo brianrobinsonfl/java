@@ -1,0 +1,69 @@
+package brianRobinson;
+
+public class MyUtils {
+
+	// ******************************************************************************
+	public static void logit(String label, Object... obj) {
+		System.out.print("[" + Thread.currentThread().getName() + ":" + Thread.currentThread().getId() + "]"+label+":");
+		int i = 0;
+		for (Object x : obj) { 
+			System.out.print(x);
+			if (++i != obj.length) 
+				System.out.print(",");
+		}
+		System.out.println();
+		return;
+	}
+
+	// ******************************************************************************
+	public static void logitAt(String txt) {
+		System.out.print(txt);
+	}
+
+	// ******************************************************************************
+	public static void logit(char c) {
+		System.out.print(c);
+	}
+
+	// ******************************************************************************
+	public static void logit(String txt) {
+		System.out.println(txt);
+	}
+
+	// ******************************************************************************
+	public static int objectTypeCheck(Object o) {
+		System.out.println("------>logit Object<------");
+		System.out.println("logit: " + o.toString());
+		System.out.println(o.getClass().getName());
+		// Days currentDay = Days.valueOf(o.getClass().getName().toUpperCase()); // enum
+		// this for Switch
+
+		if (o.getClass() == Integer.class) {
+			System.out.println("This is an Integer " + o.toString());
+			return INT;
+		} else if (o.getClass() == String.class) {
+			System.out.println("This is a String " + o.toString());
+		} else if (o.getClass() == Float.class) {
+			System.out.println("This is a Float " + o.toString());
+		} else {
+			System.out.println("This is a Other " + o.toString());
+		}
+	}
+
+	// ******************** TEST TEST TEST TEST TEST ***************************
+	public static void logitTest() {
+		objectTypeCheck(33);
+		objectTypeCheck(5.5f);
+
+		logit('c');
+		logit('\n');
+		logit("string");
+	}
+
+	// ******************************************************************************
+	void initO(Object o[]) {
+		for (int i = 0; i < o.length && o[i] != null; i++)
+			o[i] = null;
+	}
+
+} // END .....

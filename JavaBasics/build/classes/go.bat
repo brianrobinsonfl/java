@@ -1,4 +1,5 @@
-cls
 echo on
 
-java -cp . brianRobinson.Basics 
+java -cp . brianRobinson.Basics
+	
+
